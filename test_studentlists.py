@@ -74,7 +74,7 @@ class TestStudentLists(TestCase):
 
 
     # adds some example students to a test class,
-    ## then, call is_enrolled for a student who is not enrolled. 
+    # then, call is_enrolled for a student who is not enrolled. 
     # Use assertFalse to verify is_enrolled returns False.
 
     def test_student_not_in_class_is_not_enrolled(self):
@@ -122,7 +122,7 @@ class TestStudentLists(TestCase):
         self.assertIsNone(test_class.index_of_student('Munchkin'))
 
  
-    ## TODO write another test for index_of_student. In the case when the 
+    # test for index_of_student. In the case when the 
     # class_list is not empty but has some students.
     # assert that searching for a student name that is not in the list, returns None.
     def test_index_of_student_student_not_present(self):
@@ -168,7 +168,14 @@ class TestStudentLists(TestCase):
         # expecting class to be empty
         self.assertFalse(test_class2.is_class_full())
 
-    
+    def test_max_students_is_0_ore_less(self):
+        
+        # Raises error if classlist is 0
+        with self.assertRaises(StudentError):
+            ClassList(0)
+        # Raises error if classlist is a negative 
+        with self.assertRaises(StudentError):
+            ClassList(-5)
 
 
 if __name__ == '__main__':
